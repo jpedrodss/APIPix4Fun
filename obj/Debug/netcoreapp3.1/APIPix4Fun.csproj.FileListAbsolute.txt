@@ -61,9 +61,6 @@ C:\Users\João Pedro\Documents\Projetos\Pix4Fun\API\APIPix4Fun\obj\Debug\netcore
 C:\Users\000\Documents\GitHub\APIPix4Fun\obj\Debug\netcoreapp3.1\APIPix4Fun.csprojAssemblyReference.cache
 C:\Users\000\Documents\GitHub\APIPix4Fun\obj\Debug\netcoreapp3.1\APIPix4Fun.AssemblyInfoInputs.cache
 C:\Users\000\Documents\GitHub\APIPix4Fun\obj\Debug\netcoreapp3.1\APIPix4Fun.AssemblyInfo.cs
-C:\Users\000\Documents\GitHub\APIPix4Fun\obj\Debug\netcoreapp3.1\APIPix4Fun.csproj.CoreCompileInputs.cache
-C:\Users\000\Documents\GitHub\APIPix4Fun\obj\Debug\netcoreapp3.1\APIPix4Fun.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\000\Documents\GitHub\APIPix4Fun\obj\Debug\netcoreapp3.1\APIPix4Fun.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\000\Documents\GitHub\APIPix4Fun\obj\Debug\netcoreapp3.1\APIPix4Fun.dll
 C:\Users\000\Documents\GitHub\APIPix4Fun\obj\Debug\netcoreapp3.1\APIPix4Fun.pdb
 C:\Users\000\Documents\GitHub\APIPix4Fun\bin\Debug\netcoreapp3.1\appsettings.Development.json
@@ -75,6 +72,10 @@ C:\Users\000\Documents\GitHub\APIPix4Fun\bin\Debug\netcoreapp3.1\APIPix4Fun.runt
 C:\Users\000\Documents\GitHub\APIPix4Fun\bin\Debug\netcoreapp3.1\APIPix4Fun.runtimeconfig.dev.json
 C:\Users\000\Documents\GitHub\APIPix4Fun\bin\Debug\netcoreapp3.1\APIPix4Fun.dll
 C:\Users\000\Documents\GitHub\APIPix4Fun\bin\Debug\netcoreapp3.1\APIPix4Fun.pdb
+C:\Users\000\Documents\GitHub\APIPix4Fun\obj\Debug\netcoreapp3.1\APIPix4Fun.RazorTargetAssemblyInfo.cache
+C:\Users\000\Documents\GitHub\APIPix4Fun\obj\Debug\netcoreapp3.1\staticwebassets\APIPix4Fun.StaticWebAssets.Manifest.cache
+C:\Users\000\Documents\GitHub\APIPix4Fun\obj\Debug\netcoreapp3.1\staticwebassets\APIPix4Fun.StaticWebAssets.xml
+C:\Users\000\Documents\GitHub\APIPix4Fun\obj\Debug\netcoreapp3.1\APIPix4Fun.genruntimeconfig.cache
 C:\Users\000\Documents\GitHub\APIPix4Fun\bin\Debug\netcoreapp3.1\APIPix4Fun.xml
 C:\Users\000\Documents\GitHub\APIPix4Fun\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\000\Documents\GitHub\APIPix4Fun\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
@@ -113,8 +114,7 @@ C:\Users\000\Documents\GitHub\APIPix4Fun\bin\Debug\netcoreapp3.1\Swashbuckle.Asp
 C:\Users\000\Documents\GitHub\APIPix4Fun\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 C:\Users\000\Documents\GitHub\APIPix4Fun\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
 C:\Users\000\Documents\GitHub\APIPix4Fun\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\000\Documents\GitHub\APIPix4Fun\obj\Debug\netcoreapp3.1\APIPix4Fun.RazorTargetAssemblyInfo.cache
+C:\Users\000\Documents\GitHub\APIPix4Fun\obj\Debug\netcoreapp3.1\APIPix4Fun.csproj.CoreCompileInputs.cache
+C:\Users\000\Documents\GitHub\APIPix4Fun\obj\Debug\netcoreapp3.1\APIPix4Fun.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\000\Documents\GitHub\APIPix4Fun\obj\Debug\netcoreapp3.1\APIPix4Fun.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\000\Documents\GitHub\APIPix4Fun\obj\Debug\netcoreapp3.1\APIPix4Fun.csproj.CopyComplete
-C:\Users\000\Documents\GitHub\APIPix4Fun\obj\Debug\netcoreapp3.1\staticwebassets\APIPix4Fun.StaticWebAssets.Manifest.cache
-C:\Users\000\Documents\GitHub\APIPix4Fun\obj\Debug\netcoreapp3.1\staticwebassets\APIPix4Fun.StaticWebAssets.xml
-C:\Users\000\Documents\GitHub\APIPix4Fun\obj\Debug\netcoreapp3.1\APIPix4Fun.genruntimeconfig.cache
