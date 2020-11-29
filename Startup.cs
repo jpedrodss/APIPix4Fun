@@ -58,14 +58,19 @@ namespace APIPix4Fun
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "API Pix4Fun",
-                    Description = "API",
+                    Title = "Edux API",
+                    Description = "Uma simples api escolar",
                     TermsOfService = new Uri("https://example.com/terms"),
                     Contact = new OpenApiContact
                     {
                         Name = "Equipe 1",
                         Email = "equipe@gmail.com",
                         Url = new Uri("https://twitter.com/spboyer"),
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "Use under SENAI",
+                        Url = new Uri("https://example.com/license"),
                     }
                 });
 
