@@ -4,9 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<DocumentationFile>C:\Users\000\Documents\GitHub\APIPix4Fun\APIPix4Fun.xml</DocumentationFile>
-	</PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\João Pedro\Documents\Projetos\Pix4Fun\API/APIPix4Fun\APIPix4Fun.xml</DocumentationFile>
+  </PropertyGroup>
 
 	<ItemGroup>
 		<Folder Include="wwwRoot\upload\imagens\" />
