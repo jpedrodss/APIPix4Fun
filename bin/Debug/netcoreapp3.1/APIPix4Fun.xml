@@ -4,5 +4,26 @@
         <name>APIPix4Fun</name>
     </assembly>
     <members>
+        <member name="M:APIPix4Fun.Controllers.LoginController.AuthenticateUser(APIPix4Fun.Domains.Usuario)">
+            <summary>
+            Autentifica o usuario
+            </summary>
+            <param name="login">Objeto para conseguir informações de login</param>
+            <returns>Status code da ação</returns>
+        </member>
+        <member name="M:APIPix4Fun.Controllers.LoginController.GenerateJSONWebToken(APIPix4Fun.Domains.Usuario)">
+            <summary>
+            Gera o token de acesso
+            </summary>
+            <param name="userInfo">Informações de usuário</param>
+            <returns>Token de acesso</returns>
+        </member>
+        <member name="M:APIPix4Fun.Controllers.LoginController.Login(APIPix4Fun.Domains.Usuario)">
+            <summary>
+            Realiza o login do usuario
+            </summary>
+            <param name="login">Objeto para conseguir informações do usuário</param>
+            <returns>Status code do login</returns>
+        </member>
     </members>
 </doc>

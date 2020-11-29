@@ -5,24 +5,24 @@ using APIPix4Fun.Domains;
 
 namespace APIPix4Fun.Context
 {
-    public partial class PixFourFunContext : DbContext
+    public partial class Pix4FunContext : DbContext
     {
-        public PixFourFunContext()
+        public Pix4FunContext()
         {
         }
 
-        public PixFourFunContext(DbContextOptions<PixFourFunContext> options)
+        public Pix4FunContext(DbContextOptions<Pix4FunContext> options)
             : base(options)
         {
         }
 
-        public virtual DbSet<Cupom> Cupom { get; set; }
-        public virtual DbSet<Foto> Foto { get; set; }
-        public virtual DbSet<Pack> Pack { get; set; }
-        public virtual DbSet<Pagamento> Pagamento { get; set; }
-        public virtual DbSet<Pedido> Pedido { get; set; }
+        public virtual DbSet<Cupom> Cupons { get; set; }
+        public virtual DbSet<Foto> Fotos { get; set; }
+        public virtual DbSet<Pack> Packs { get; set; }
+        public virtual DbSet<Pagamento> Pagamentos { get; set; }
+        public virtual DbSet<Pedido> Pedidos { get; set; }
         public virtual DbSet<Perfilacesso> Perfilacesso { get; set; }
-        public virtual DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<Usuario> Usuarios { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
