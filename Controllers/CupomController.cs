@@ -14,28 +14,28 @@ namespace APIPix4Fun.Controllers
     [ApiController]
     public class CupomController : ControllerBase
     {
-        private readonly CupomRepository _cupomRepository;
+        private readonly CupomRepository _usuarioRepository;
 
         public CupomController()
         {
-            _cupomRepository = new CupomRepository();
+            _usuarioRepository = new UsuarioRepository();
         }
 
-        // GET: api/<CupomController>
+
         [HttpGet]
         public IActionResult Get()
         {
             try
             {
-                var cupons = _cupomRepository.Listar();
+                var packs = _usuarioRepository.Listar();
 
-                if (cupons.Count == 0)
+                if (packs.Count == 0)
                     return NoContent();
 
                 return Ok(new
                 {
-                    totalCount = cupons.Count,
-                    data = cupons
+                    totalCount = packs.Count,
+                    data = packs
                 });
             }
             catch (Exception ex)
@@ -43,27 +43,40 @@ namespace APIPix4Fun.Controllers
                 return BadRequest(new
                 {
                     statusCode = 400,
-                    error = "Envie um email para email@email.com informando que ocorreu um erro no endpoit Get/Cupom "
+                    error = "Envie um email para email@email.com informando que ocorreu um erro no endpoit Get/Pack "
                 });
             }
         }
 
-        // GET api/<CupomController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
 
-        // POST api/<CupomController>
-        [HttpPost]
-        public IActionResult Post(Cupom cupom)
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
         {
             try
             {
-                _cupomRepository.Adicionar(cupom);
+                Usuario categoria = _usuarioRepository.BuscarID(id);
 
-                return Ok(cupom);
+                if (categoria == null)
+                    return NotFound();
+
+                return Ok(categoria);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        // POST api/<UsuarioController>
+        [HttpPost]
+        public IActionResult Post(Usuario usuario)
+        {
+            try
+            {
+                _usuarioRepository.Adicionar(usuario);
+
+                return Ok(usuario);
             }
             catch (Exception ex)
             {
@@ -71,16 +84,41 @@ namespace APIPix4Fun.Controllers
             }
         }
 
-        // PUT api/<CupomController>/5
+        // PUT api/<UsuarioController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, Usuario usuario)
         {
-        }
+            try
+            {
+                var categoriaTemp = _usuarioRepository.BuscarID(id);
 
-        // DELETE api/<CupomController>/5
+                if (categoriaTemp == null)
+                    return NotFound();
+
+                usuario.IdUsuario = id;
+                _usuarioRepository.Editar(usuario);
+
+                return Ok(usuario);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        // DELETE api/<UsuarioController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            try
+            {
+                _usuarioRepository.Excluir(id);
+
+                return Ok(id);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
