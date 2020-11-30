@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using APIPix4Fun.Domains;
 using APIPix4Fun.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,39 +19,107 @@ namespace APIPix4Fun.Controllers
 
         public UsuarioController()
         {
-            UsuarioRepository = new _usuarioRepository();
+            _usuarioRepository = new UsuarioRepository();
         }
 
-        // GET: api/<UsuarioController>
+        
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            
+            try
+            {
+                var users = _usuarioRepository.Listar();
+
+                if (users.Count == 0)
+                    return NoContent();
+
+                return Ok(new
+                {
+                    totalCount = users.Count,
+                    data = users
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new
+                {
+                    statusCode = 400,
+                    error = "Envie um email para email@email.com informando que ocorreu um erro no endpoit Get/Pack "
+                });
+            }
         }
 
-        // GET api/<UsuarioController>/5
+        
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            try
+            {
+                Usuario usuario = _usuarioRepository.BuscarID(id);
+
+                if (usuario == null)
+                    return NotFound();
+
+                return Ok(usuario);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         // POST api/<UsuarioController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post(Usuario usuario)
         {
+            try
+            {
+                _usuarioRepository.Adicionar(usuario);
+
+                return Ok(usuario);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // PUT api/<UsuarioController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, Usuario usuario)
         {
-        }
+            try
+            {
+                var usuariotemp = _usuarioRepository.BuscarID(id);
 
+                if (usuariotemp == null)
+                    return NotFound();
+
+                usuario.IdUsuario = id;
+                _usuarioRepository.Editar(usuario);
+
+                return Ok(usuario);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
         // DELETE api/<UsuarioController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            try
+            {
+                _usuarioRepository.Excluir(id);
+
+                return Ok(id);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

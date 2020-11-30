@@ -14,11 +14,11 @@ namespace APIPix4Fun.Controllers
     [ApiController]
     public class CupomController : ControllerBase
     {
-        private readonly CupomRepository _usuarioRepository;
+        private readonly CupomRepository _cupomRepository;
 
         public CupomController()
         {
-            _usuarioRepository = new UsuarioRepository();
+            _cupomRepository = new CupomRepository();
         }
 
 
@@ -27,15 +27,15 @@ namespace APIPix4Fun.Controllers
         {
             try
             {
-                var packs = _usuarioRepository.Listar();
+                var cupoms = _cupomRepository.Listar();
 
-                if (packs.Count == 0)
+                if (cupoms.Count == 0)
                     return NoContent();
 
                 return Ok(new
                 {
-                    totalCount = packs.Count,
-                    data = packs
+                    totalCount = cupoms.Count,
+                    data = cupoms
                 });
             }
             catch (Exception ex)
@@ -54,12 +54,12 @@ namespace APIPix4Fun.Controllers
         {
             try
             {
-                Usuario categoria = _usuarioRepository.BuscarID(id);
+                Cupom cupom = _cupomRepository.BuscarID(id);
 
-                if (categoria == null)
+                if (cupom == null)
                     return NotFound();
 
-                return Ok(categoria);
+                return Ok(cupom);
             }
             catch (Exception ex)
             {
@@ -70,13 +70,13 @@ namespace APIPix4Fun.Controllers
 
         // POST api/<UsuarioController>
         [HttpPost]
-        public IActionResult Post(Usuario usuario)
+        public IActionResult Post(Cupom cupom)
         {
             try
             {
-                _usuarioRepository.Adicionar(usuario);
+                _cupomRepository.Adicionar(cupom);
 
-                return Ok(usuario);
+                return Ok(cupom);
             }
             catch (Exception ex)
             {
@@ -86,19 +86,19 @@ namespace APIPix4Fun.Controllers
 
         // PUT api/<UsuarioController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, Usuario usuario)
+        public IActionResult Put(int id, Cupom cupom)
         {
             try
             {
-                var categoriaTemp = _usuarioRepository.BuscarID(id);
+                var cupomtemp = _cupomRepository.BuscarID(id);
 
-                if (categoriaTemp == null)
+                if (cupomtemp == null)
                     return NotFound();
 
-                usuario.IdUsuario = id;
-                _usuarioRepository.Editar(usuario);
+                cupom.IdCupom = id;
+                _cupomRepository.Editar(cupom);
 
-                return Ok(usuario);
+                return Ok(cupom);
             }
             catch (Exception ex)
             {
@@ -111,7 +111,7 @@ namespace APIPix4Fun.Controllers
         {
             try
             {
-                _usuarioRepository.Excluir(id);
+                _cupomRepository.Excluir(id);
 
                 return Ok(id);
             }
