@@ -1,20 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
-using APIEdux.Utils;
 using APIPix4Fun.Context;
 using APIPix4Fun.Domains;
+using APIPix4Fun.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace APIPix4Fun.Controllers
 {
@@ -57,7 +53,7 @@ namespace APIPix4Fun.Controllers
             var claims = new[] {
                 new Claim(JwtRegisteredClaimNames.NameId, userInfo.Nome),
                 new Claim(JwtRegisteredClaimNames.Email, userInfo.Email),
-                new Claim("Role", userInfo.IdPerfilAcesso.ToString()),
+                new Claim("Role", userInfo.IdPerfilAcessoNavigation.TipoPerfil),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(ClaimTypes.Role, userInfo.IdPerfilAcessoNavigation.TipoPerfil)
         };

@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace APIEdux.Utils
+namespace APIPix4Fun.Utils
 {
 	public static class Crypto
 	{

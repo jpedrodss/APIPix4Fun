@@ -25,5 +25,40 @@
             <param name="login">Objeto para conseguir informações do usuário</param>
             <returns>Status code do login</returns>
         </member>
+        <member name="M:APIPix4Fun.Controllers.UsuarioController.Get">
+            <summary>
+            Lista os usuarios
+            </summary>
+            <returns>Lista de usuários</returns>
+        </member>
+        <member name="M:APIPix4Fun.Controllers.UsuarioController.Get(System.Int32)">
+            <summary>
+            Busca usuário por ID
+            </summary>
+            <param name="id">Id do Usuário</param>
+            <returns>Usuário buscado</returns>
+        </member>
+        <member name="M:APIPix4Fun.Controllers.UsuarioController.Post(APIPix4Fun.Domains.Usuario)">
+            <summary>
+            Adiciona um usuário a base de dados
+            </summary>
+            <param name="usuario">Usuario a ser adicionado</param>
+            <returns>Usuario adicionado</returns>
+        </member>
+        <member name="M:APIPix4Fun.Controllers.UsuarioController.Put(System.Int32,APIPix4Fun.Domains.Usuario)">
+            <summary>
+            Altera um usuário
+            </summary>
+            <param name="id">ID para buscar usuario</param>
+            <param name="usuario">Objeto para pegar informações do usuário</param>
+            <returns>Alterações feitas</returns>
+        </member>
+        <member name="M:APIPix4Fun.Controllers.UsuarioController.Delete(System.Int32)">
+            <summary>
+            Exclui um usuário
+            </summary>
+            <param name="id">ID do usuario para ser exlcuido</param>
+            <returns>Status code</returns>
+        </member>
     </members>
 </doc>

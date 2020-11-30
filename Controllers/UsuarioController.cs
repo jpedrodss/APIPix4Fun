@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using APIPix4Fun.Domains;
+using APIPix4Fun.Interfaces;
 using APIPix4Fun.Repositories;
+using APIPix4Fun.Utils;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using Microsoft.EntityFrameworkCore;
 
 namespace APIPix4Fun.Controllers
 {
@@ -14,29 +12,31 @@ namespace APIPix4Fun.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-
-        private readonly UsuarioRepository _usuarioRepository;
+        private readonly IUsuario _usuarioRepository;
 
         public UsuarioController()
         {
             _usuarioRepository = new UsuarioRepository();
         }
 
-        
+        /// <summary>
+        /// Lista os usuarios
+        /// </summary>
+        /// <returns>Lista de usuários</returns>
         [HttpGet]
         public IActionResult Get()
         {
             try
             {
-                var users = _usuarioRepository.Listar();
+                var usuarios = _usuarioRepository.Listar();
 
-                if (users.Count == 0)
+                if (usuarios.Count == 0)
                     return NoContent();
 
                 return Ok(new
                 {
-                    totalCount = users.Count,
-                    data = users
+                    totalCount = usuarios.Count,
+                    data = usuarios
                 });
             }
             catch (Exception ex)
@@ -44,12 +44,16 @@ namespace APIPix4Fun.Controllers
                 return BadRequest(new
                 {
                     statusCode = 400,
-                    error = "Envie um email para email@email.com informando que ocorreu um erro no endpoit Get/Pack "
+                    error = "Envie um email para email@email.com informando que ocorreu um erro no endpoint Get/Usuarios"
                 });
             }
         }
 
-        
+        /// <summary>
+        /// Busca usuário por ID
+        /// </summary>
+        /// <param name="id">Id do Usuário</param>
+        /// <returns>Usuário buscado</returns>
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -64,17 +68,22 @@ namespace APIPix4Fun.Controllers
             }
             catch (Exception ex)
             {
-
-                throw new Exception(ex.Message);
+                return BadRequest(ex.Message);
             }
         }
 
-        // POST api/<UsuarioController>
+        /// <summary>
+        /// Adiciona um usuário a base de dados
+        /// </summary>
+        /// <param name="usuario">Usuario a ser adicionado</param>
+        /// <returns>Usuario adicionado</returns>
         [HttpPost]
         public IActionResult Post(Usuario usuario)
         {
             try
             {
+                usuario.Senha = Crypto.Criptografar(usuario.Senha, usuario.Email.Substring(0, 4));
+
                 _usuarioRepository.Adicionar(usuario);
 
                 return Ok(usuario);
@@ -85,15 +94,20 @@ namespace APIPix4Fun.Controllers
             }
         }
 
-        // PUT api/<UsuarioController>/5
+        /// <summary>
+        /// Altera um usuário
+        /// </summary>
+        /// <param name="id">ID para buscar usuario</param>
+        /// <param name="usuario">Objeto para pegar informações do usuário</param>
+        /// <returns>Alterações feitas</returns>
         [HttpPut("{id}")]
         public IActionResult Put(int id, Usuario usuario)
         {
             try
             {
-                var usuariotemp = _usuarioRepository.BuscarID(id);
+                var usuarioTemp = _usuarioRepository.BuscarID(id);
 
-                if (usuariotemp == null)
+                if (usuarioTemp == null)
                     return NotFound();
 
                 usuario.IdUsuario = id;
@@ -106,7 +120,12 @@ namespace APIPix4Fun.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        // DELETE api/<UsuarioController>/5
+
+        /// <summary>
+        /// Exclui um usuário
+        /// </summary>
+        /// <param name="id">ID do usuario para ser exlcuido</param>
+        /// <returns>Status code</returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

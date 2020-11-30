@@ -1,6 +1,7 @@
 ﻿using APIPix4Fun.Context;
 using APIPix4Fun.Domains;
 using APIPix4Fun.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -88,7 +89,12 @@ namespace APIPix4Fun.Repositories
         {
             try
             {
-                List<Usuario> usuarios = _ctx.Usuarios.ToList();
+                List<Usuario> usuarios = _ctx.Usuarios.Include("IdPerfilAcessoNavigation").ToList();
+
+                foreach (Usuario _usuario in usuarios)
+                {
+                    _usuario.IdPerfilAcessoNavigation.Usuario = null;
+                }
 
                 if (usuarios == null)
                     throw new Exception("Não há usuarios cadastrados.");

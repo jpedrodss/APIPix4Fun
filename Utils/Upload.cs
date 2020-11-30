@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace APIEdux.Utils
+namespace APIPix4Fun.Utils
 {
     public static class Upload
     {
