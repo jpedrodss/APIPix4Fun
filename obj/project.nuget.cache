@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+hfe8jI7AVGSQ/4vxVQ5PNwGRAyA29PMJ4BQRMDOEsHKAOhlH85EWwToBNRmhT45wPLmvuYtuSncJYvBhnsdLQ==",
+  "dgSpecHash": "iJC/2XV4wCi9hecim6jtwQVRDW2jR1zs+LIJVx/S00dqRiqqeWIzx7HdNVnanKN+oaur305ulAsW35GtItrjlg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\João Pedro\\Documents\\Projetos\\Pix4Fun\\API\\APIPix4Fun\\APIPix4Fun.csproj",
+  "projectFilePath": "C:\\Users\\João Pedro\\Documents\\Projetos\\Pix4Fun\\APIPix4Fun\\APIPix4Fun.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\João Pedro\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.8\\microsoft.aspnetcore.authentication.jwtbearer.3.1.8.nupkg.sha512",
     "C:\\Users\\João Pedro\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.8\\microsoft.aspnetcore.jsonpatch.3.1.8.nupkg.sha512",

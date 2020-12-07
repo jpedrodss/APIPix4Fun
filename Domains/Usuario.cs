@@ -7,6 +7,7 @@ namespace APIPix4Fun.Domains
     {
         public Usuario()
         {
+            Endereco = new HashSet<Endereco>();
             Pagamento = new HashSet<Pagamento>();
             Pedido = new HashSet<Pedido>();
         }
@@ -19,6 +20,7 @@ namespace APIPix4Fun.Domains
         public string Telefone { get; set; }
 
         public virtual Perfilacesso IdPerfilAcessoNavigation { get; set; }
+        public virtual ICollection<Endereco> Endereco { get; set; }
         public virtual ICollection<Pagamento> Pagamento { get; set; }
         public virtual ICollection<Pedido> Pedido { get; set; }
     }

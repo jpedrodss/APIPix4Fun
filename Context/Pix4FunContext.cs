@@ -17,6 +17,7 @@ namespace APIPix4Fun.Context
         }
 
         public virtual DbSet<Cupom> Cupons { get; set; }
+        public virtual DbSet<Endereco> Enderecos { get; set; }
         public virtual DbSet<Foto> Fotos { get; set; }
         public virtual DbSet<Pack> Packs { get; set; }
         public virtual DbSet<Pagamento> Pagamentos { get; set; }
@@ -29,7 +30,7 @@ namespace APIPix4Fun.Context
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("server=127.0.0.1;database=PixFourFun;uid=root;pwd=251220011qazZ", x => x.ServerVersion("8.0.22-mysql"));
+                optionsBuilder.UseMySql("server=localhost;database=PixFourFun;uid=root;pwd=251220011qazZ", x => x.ServerVersion("8.0.22-mysql"));
             }
         }
 
@@ -48,6 +49,65 @@ namespace APIPix4Fun.Context
                     .HasColumnType("varchar(100)")
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_0900_ai_ci");
+            });
+
+            modelBuilder.Entity<Endereco>(entity =>
+            {
+                entity.HasKey(e => e.IdEndereco)
+                    .HasName("PRIMARY");
+
+                entity.ToTable("endereco");
+
+                entity.HasIndex(e => e.IdUsuario)
+                    .HasName("IdUsuario");
+
+                entity.Property(e => e.Bairro)
+                    .IsRequired()
+                    .HasColumnType("varchar(100)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
+
+                entity.Property(e => e.Cep)
+                    .IsRequired()
+                    .HasColumnName("CEP")
+                    .HasColumnType("varchar(50)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
+
+                entity.Property(e => e.Cidade)
+                    .IsRequired()
+                    .HasColumnType("varchar(100)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
+
+                entity.Property(e => e.Complemento)
+                    .HasColumnType("varchar(50)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
+
+                entity.Property(e => e.Numero)
+                    .IsRequired()
+                    .HasColumnType("varchar(50)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
+
+                entity.Property(e => e.Rua)
+                    .IsRequired()
+                    .HasColumnType("varchar(100)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
+
+                entity.Property(e => e.Uf)
+                    .IsRequired()
+                    .HasColumnName("UF")
+                    .HasColumnType("varchar(2)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
+
+                entity.HasOne(d => d.IdUsuarioNavigation)
+                    .WithMany(p => p.Endereco)
+                    .HasForeignKey(d => d.IdUsuario)
+                    .HasConstraintName("endereco_ibfk_1");
             });
 
             modelBuilder.Entity<Foto>(entity =>
