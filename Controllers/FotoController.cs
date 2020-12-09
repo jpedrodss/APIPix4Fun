@@ -43,7 +43,7 @@ namespace APIPix4Fun.Controllers
                 return BadRequest(new
                 {
                     statusCode = 400,
-                    error = "Envie um email para email@email.com informando que ocorreu um erro no endpoit Get/Pack "
+                    error = "Envie um email para email@email.com informando que ocorreu um erro no endpoit Get/Foto "
                 });
             }
         }
