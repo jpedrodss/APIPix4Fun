@@ -17,7 +17,6 @@ namespace APIPix4Fun.Context
         }
 
         public virtual DbSet<Cupom> Cupons { get; set; }
-        public virtual DbSet<Endereco> Enderecos { get; set; }
         public virtual DbSet<Foto> Fotos { get; set; }
         public virtual DbSet<Pack> Packs { get; set; }
         public virtual DbSet<Pagamento> Pagamentos { get; set; }
@@ -49,65 +48,6 @@ namespace APIPix4Fun.Context
                     .HasColumnType("varchar(100)")
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_0900_ai_ci");
-            });
-
-            modelBuilder.Entity<Endereco>(entity =>
-            {
-                entity.HasKey(e => e.IdEndereco)
-                    .HasName("PRIMARY");
-
-                entity.ToTable("endereco");
-
-                entity.HasIndex(e => e.IdUsuario)
-                    .HasName("IdUsuario");
-
-                entity.Property(e => e.Bairro)
-                    .IsRequired()
-                    .HasColumnType("varchar(100)")
-                    .HasCharSet("utf8mb4")
-                    .HasCollation("utf8mb4_0900_ai_ci");
-
-                entity.Property(e => e.Cep)
-                    .IsRequired()
-                    .HasColumnName("CEP")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8mb4")
-                    .HasCollation("utf8mb4_0900_ai_ci");
-
-                entity.Property(e => e.Cidade)
-                    .IsRequired()
-                    .HasColumnType("varchar(100)")
-                    .HasCharSet("utf8mb4")
-                    .HasCollation("utf8mb4_0900_ai_ci");
-
-                entity.Property(e => e.Complemento)
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8mb4")
-                    .HasCollation("utf8mb4_0900_ai_ci");
-
-                entity.Property(e => e.Numero)
-                    .IsRequired()
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8mb4")
-                    .HasCollation("utf8mb4_0900_ai_ci");
-
-                entity.Property(e => e.Rua)
-                    .IsRequired()
-                    .HasColumnType("varchar(100)")
-                    .HasCharSet("utf8mb4")
-                    .HasCollation("utf8mb4_0900_ai_ci");
-
-                entity.Property(e => e.Uf)
-                    .IsRequired()
-                    .HasColumnName("UF")
-                    .HasColumnType("varchar(2)")
-                    .HasCharSet("utf8mb4")
-                    .HasCollation("utf8mb4_0900_ai_ci");
-
-                entity.HasOne(d => d.IdUsuarioNavigation)
-                    .WithMany(p => p.Endereco)
-                    .HasForeignKey(d => d.IdUsuario)
-                    .HasConstraintName("endereco_ibfk_1");
             });
 
             modelBuilder.Entity<Foto>(entity =>
@@ -248,12 +188,33 @@ namespace APIPix4Fun.Context
                 entity.HasIndex(e => e.IdPerfilAcesso)
                     .HasName("IdPerfilAcesso");
 
+                entity.Property(e => e.Cep)
+                    .HasColumnName("CEP")
+                    .HasColumnType("varchar(50)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
+
+                entity.Property(e => e.Complemento)
+                    .HasColumnType("varchar(50)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
+
                 entity.Property(e => e.Email)
                     .HasColumnType("varchar(40)")
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_0900_ai_ci");
 
                 entity.Property(e => e.Nome)
+                    .HasColumnType("varchar(100)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
+
+                entity.Property(e => e.Numero)
+                    .HasColumnType("varchar(50)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
+
+                entity.Property(e => e.Rua)
                     .HasColumnType("varchar(100)")
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_0900_ai_ci");

@@ -58,20 +58,20 @@ namespace APIPix4Fun
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "Edux API",
-                    Description = "Uma simples api escolar",
+                    Title = "PIX4FUN API",
+                    Description = "API para o site Pix4Fun",
                     TermsOfService = new Uri("https://example.com/terms"),
                     Contact = new OpenApiContact
                     {
-                        Name = "Equipe 1",
-                        Email = "equipe@gmail.com",
-                        Url = new Uri("https://twitter.com/spboyer"),
+                        Name = "João e Gabriel",
+                        Email = "jpedrodss@gmail.com",
+                        Url = new Uri("https://twitter.com/jpss02"),
                     },
-                    License = new OpenApiLicense
+                    /* License = new OpenApiLicense
                     {
                         Name = "Use under SENAI",
                         Url = new Uri("https://example.com/license"),
-                    }
+                    }*/
                 });
 
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";

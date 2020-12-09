@@ -25,6 +25,19 @@
             <param name="login">Objeto para conseguir informações do usuário</param>
             <returns>Status code do login</returns>
         </member>
+        <member name="M:APIPix4Fun.Controllers.PerfilAcessoController.Get">
+            <summary>
+            Lista os perfilAcessos
+            </summary>
+            <returns>Lista de usuários</returns>
+        </member>
+        <member name="M:APIPix4Fun.Controllers.PerfilAcessoController.Get(System.Int32)">
+            <summary>
+            Busca perfil de acesso por ID
+            </summary>
+            <param name="id">Id do Perfil</param>
+            <returns>Perfil buscado</returns>
+        </member>
         <member name="M:APIPix4Fun.Controllers.UsuarioController.Get">
             <summary>
             Lista os usuarios

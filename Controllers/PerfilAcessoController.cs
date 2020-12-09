@@ -1,5 +1,7 @@
 ﻿using APIPix4Fun.Domains;
+using APIPix4Fun.Interfaces;
 using APIPix4Fun.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,29 +10,35 @@ using System.Threading.Tasks;
 
 namespace APIPix4Fun.Controllers
 {
-    public class PerfilAcessoController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class PerfilAcessoController : ControllerBase
     {
-        private readonly PerfilAcessoRepository _perfilAcessoRepository;
+        private readonly IPerfilAcesso _perfilAcessoRepository;
 
         public PerfilAcessoController()
         {
             _perfilAcessoRepository = new PerfilAcessoRepository();
         }
 
+        /// <summary>
+        /// Lista os perfilAcessos
+        /// </summary>
+        /// <returns>Lista de usuários</returns>
         [HttpGet]
         public IActionResult Get()
         {
             try
             {
-                var perfis = _perfilAcessoRepository.Listar();
+                var perfilAcessos = _perfilAcessoRepository.Listar();
 
-                if (perfis.Count == 0)
+                if (perfilAcessos.Count == 0)
                     return NoContent();
 
                 return Ok(new
                 {
-                    totalCount = perfis.Count,
-                    data = perfis
+                    totalCount = perfilAcessos.Count,
+                    data = perfilAcessos
                 });
             }
             catch (Exception ex)
@@ -38,11 +46,16 @@ namespace APIPix4Fun.Controllers
                 return BadRequest(new
                 {
                     statusCode = 400,
-                    error = "Envie um email para email@email.com informando que ocorreu um erro no endpoit Get/Pack "
+                    error = "Envie um email para email@email.com informando que ocorreu um erro no endpoint Get/PerfilAcessos"
                 });
             }
         }
 
+        /// <summary>
+        /// Busca perfil de acesso por ID
+        /// </summary>
+        /// <param name="id">Id do Perfil</param>
+        /// <returns>Perfil buscado</returns>
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
