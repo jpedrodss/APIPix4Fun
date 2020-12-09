@@ -8,6 +8,13 @@
     <DocumentationFile>C:\Users\João Pedro\Documents\Projetos\Pix4Fun\API\APIPix4Fun\APIPix4Fun.xml</DocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20201209133048_AlterTableUsuario.cs" />
+    <Compile Remove="Migrations\20201209133048_AlterTableUsuario.Designer.cs" />
+    <Compile Remove="Migrations\20201209133151_InitialCreate.cs" />
+    <Compile Remove="Migrations\20201209133151_InitialCreate.Designer.cs" />
+  </ItemGroup>
+
 	<ItemGroup>
 		<Folder Include="wwwRoot\upload\imagens\" />
 	</ItemGroup>
