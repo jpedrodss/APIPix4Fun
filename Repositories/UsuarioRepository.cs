@@ -1,6 +1,7 @@
 ﻿using APIPix4Fun.Context;
 using APIPix4Fun.Domains;
 using APIPix4Fun.Interfaces;
+using APIPix4Fun.Utils;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,8 @@ namespace APIPix4Fun.Repositories
         {
             try
             {
+                obj.Senha = Crypto.Criptografar(obj.Senha, obj.Email.Substring(0, 4));
+
                 _ctx.Usuarios.Add(obj);
 
                 _ctx.SaveChanges();
@@ -51,12 +54,18 @@ namespace APIPix4Fun.Repositories
                 Usuario temp = BuscarID(obj.IdUsuario);
 
                 if (temp == null)
-                    throw new Exception("Usuario não encontrado.");
+                    throw new Exception("Usuarios não encontrado.");
 
                 temp.Nome = obj.Nome;
                 temp.Email = obj.Email;
                 temp.Senha = obj.Senha;
                 temp.Telefone = obj.Telefone;
+                temp.Cep = obj.Cep;
+                temp.Rua = obj.Rua;
+                temp.Numero = obj.Numero;
+                temp.Complemento = obj.Complemento;
+
+                temp.Senha = Crypto.Criptografar(temp.Senha, temp.Email.Substring(0, 4));
 
                 _ctx.Usuarios.Update(temp);
                 _ctx.SaveChanges();
@@ -73,7 +82,7 @@ namespace APIPix4Fun.Repositories
             {
                 Usuario usuario = BuscarID(id);
                 if (usuario == null)
-                    throw new Exception("Usuario não encontrado.");
+                    throw new Exception("Usuarios não encontrado.");
 
                 _ctx.Usuarios.Remove(usuario);
 

@@ -12,7 +12,7 @@ namespace APIPix4Fun.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-        private readonly UsuarioRepository _usuarioRepository;
+        private readonly IUsuario _usuarioRepository;
 
         public UsuarioController()
         {
@@ -82,9 +82,8 @@ namespace APIPix4Fun.Controllers
         {
             try
             {
-                _usuarioRepository.Adicionar(usuario);
 
-                usuario.Senha = Crypto.Criptografar(usuario.Senha, usuario.Email.Substring(0, 4));
+                _usuarioRepository.Adicionar(usuario);
 
                 return Ok(usuario);
             }
